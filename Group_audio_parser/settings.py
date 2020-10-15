@@ -1,2 +1,0 @@
-TOKEN = ''
-GROUP_ID = ''
