@@ -26,7 +26,7 @@ class GroupAudio:
         self.group_id = group_id
         self.vk_session = vk.Session(access_token=self.token)
         self.vk_api = vk.API(session=self.vk_session)
-        self.vk_group_parser = self.vk_api.wall.get(domain='thsmsc', count=100, v=5.92)
+        self.vk_group_parser = self.vk_api.wall.get(domain=self.group_id, count=100, v=5.92)
         self.count = self.vk_group_parser['count'] // 100
 
     def group_parser(self):
@@ -35,7 +35,7 @@ class GroupAudio:
             try:
                 print(i)
                 self.GROUP_PARS.append(
-                    self.vk_api.wall.get(domain='thsmsc', count=100, offset=i * 100, v=5.92)['items'])
+                    self.vk_api.wall.get(domain=self.group_id, count=100, offset=i * 100, v=5.92)['items'])
             except TypeError as exc:
                 print(exc)
         self.group_data()
